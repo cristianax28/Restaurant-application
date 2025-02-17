@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Rezervări</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #d32f2f;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .actions a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+
+        .actions a:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Lista Rezervări</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ID Client</th>
+            <th>ID Masă</th>
+            <th>Data</th>
+            <th>Ora</th>
+            <th>Număr Persoane</th>
+            <th>Status</th>
+            <th>Acțiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterăm prin rezervările din baza de date -->
+        <tr th:each="rezervare : ${rezervari}">
+            <td th:text="${rezervare.idRezervare}"></td>
+            <td th:text="${rezervare.idClient}"></td>
+            <td th:text="${rezervare.idMasa}"></td>
+            <td th:text="${rezervare.data}"></td>
+            <td th:text="${rezervare.ora}"></td>
+            <td th:text="${rezervare.numarPersoane}"></td>
+            <td th:text="${rezervare.status}"></td>
+            <td class="actions">
+                <!-- Formular pentru ștergere -->
+                <form th:action="@{'/rezervari/delete/' + ${rezervare.idRezervare}}" method="post" onsubmit="return confirm('Ești sigur că vrei să ștergi această rezervare?');" style="display:inline;">
+                    <button type="submit">Șterge</button>
+                </form>
+
+                <!-- Buton pentru actualizare -->
+                <a th:href="@{'/rezervari/edit/' + ${rezervare.idRezervare}}">Actualizează</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/rezervari/new" class="actions">Adaugă o rezervare nouă</a> |
+    <a href="/">Înapoi la pagina principală</a>
+</div>
+</body>
+</html>

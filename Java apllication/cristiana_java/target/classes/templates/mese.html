@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Mese</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+        }
+
+        a {
+            display: inline-block;
+            color: #28a745;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista Mese</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Număr Masă</th>
+        <th>Capacitate</th>
+        <th>Localizare</th>
+    </tr>
+    <tr th:each="masa : ${mese}">
+        <td th:text="${masa.idMasa}"></td>
+        <td th:text="${masa.numarMasa}"></td>
+        <td th:text="${masa.capacitate}"></td>
+        <td th:text="${masa.localizare}"></td>
+    </tr>
+</table>
+<br>
+<a href="/">Înapoi la pagina principală</a>
+</body>
+</html>

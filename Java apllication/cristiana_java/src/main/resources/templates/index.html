@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pagina principală</title>
+    <style>
+        /* Stilizare generală */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #0b0505;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        ul {
+            text-align: center;
+        }
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buton Logout */
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #557a55;
+        }
+    </style>
+</head>
+<body>
+<h1>Bine ai venit!</h1>
+<ul>
+    <li><a th:href="@{/clienti}">Clienți</a></li>
+    <li><a th:href="@{/mese}">Mese</a></li>
+    <li><a th:href="@{/rezervari}">Rezervări</a></li>
+    <li><a th:href="@{/meniu}">Meniu</a></li>
+    <li><a th:href="@{/comenzi}">Comenzi</a></li>
+</ul>
+<!-- Buton Logout -->
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>

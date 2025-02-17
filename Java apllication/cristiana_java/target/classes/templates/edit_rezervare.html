@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editare Rezervare</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+        }
+
+        a {
+            display: inline-block;
+            color: #28a745;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Editare Rezervare</h1>
+<form th:action="@{/rezervari/update/{id}(id=${rezervare.idRezervare})}" th:object="${rezervare}" method="post">
+    <label for="idClient">ID Client:</label>
+    <input type="text" id="idClient" th:field="*{idClient}" required><br><br>
+
+    <label for="idMasa">ID Masă:</label>
+    <input type="text" id="idMasa" th:field="*{idMasa}" required><br><br>
+
+    <label for="data">Data:</label>
+    <input type="date" id="data" th:field="*{data}" required><br><br>
+
+    <label for="ora">Ora:</label>
+    <input type="time" id="ora" th:field="*{ora}" required><br><br>
+
+    <label for="numarPersoane">Număr Persoane:</label>
+    <input type="number" id="numarPersoane" th:field="*{numarPersoane}" required><br><br>
+
+    <label for="status">Status:</label>
+    <input type="text" id="status" th:field="*{status}" required><br><br>
+
+    <button type="submit">Salvează Modificările</button>
+</form>
+<br>
+<a href="/rezervari">Înapoi la lista rezervărilor</a>
+</body>
+</html>
